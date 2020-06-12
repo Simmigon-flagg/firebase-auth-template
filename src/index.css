@@ -1,0 +1,11 @@
+body {
+  font-weight: 200;
+  background-color: rgb(9, 9, 42);
+  color: white
+}
+
+input,
+nav-item {
+  font-weight: 200;
+  line-height: 110%;
+}

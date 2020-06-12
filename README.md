@@ -1,1 +1,2 @@
-# firebase-auth-template
+## My Auth App
+
