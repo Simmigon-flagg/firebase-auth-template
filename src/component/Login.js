@@ -85,8 +85,8 @@ class Login extends Component {
                       name="email"
                       
                       placeholder="Email"
-                      value="admin@me.com"
-                      //value={this.state.email}
+                     
+                      value={this.state.email}
                       onChange={this.handleChange}
                     />
                   </section>
