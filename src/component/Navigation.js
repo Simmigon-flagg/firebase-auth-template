@@ -3,7 +3,7 @@ import { FaUsers } from "react-icons/fa";
 import { Link } from "@reach/router";
 class Navigation extends Component {
   render() {
-    const { user , logOutUser} = this.props;
+    const { userName , logOutUser} = this.props;
 
     return (
       <nav className="site-nav family-sans navbar navbar-expand bg-primary navbar-dark higher">
@@ -12,22 +12,22 @@ class Navigation extends Component {
             <FaUsers className="mr-1" /> App Name
           </Link>
           <div className="navbar-nav ml-auto">
-            {user && (
+            {userName && (
               <Link className="nav-item nav-link" to="/dashboard">
               Dashboard
               </Link>
             )}
-            {!user && (
+            {!userName && (
               <Link className="nav-item nav-link" to="/login">
                 log in
               </Link>
             )}
-            {!user && (
+            {!userName && (
               <Link className="nav-item nav-link" to="/register">
                 register
               </Link>
             )}
-            {user && (
+            {userName && (
               <Link className="nav-item nav-link" to="/login"
               onClick={e => logOutUser(e)}>
                 log out

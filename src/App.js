@@ -22,14 +22,21 @@ class App extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(FBUser => {
+  
       if (FBUser) {
         this.setState({
           user: FBUser,
           displayName: FBUser.displayName,
           userID: FBUser.uid
         });
+      }else{
+        this.setState({user:null});
       }
+      console.log("Display: "+JSON.stringify(this.state.displayName));
+      console.log("User: "+JSON.stringify(this.state.displayName));
+      console.log(FBUser);
     });
+
   }
 
   registerUser = userName => {
@@ -49,16 +56,17 @@ class App extends Component {
 
   logOutUser = e => {
     e.preventDefault();
-    this.setState({
-      displayName: null,
-      userID: null,
-      user: null
-    });
+
 
     firebase
       .auth()
       .signOut()
       .then(() => {
+        this.setState({
+          displayName: null,
+          userID: null,
+          user: null
+        });
         navigate('/login');
       });
   };
@@ -67,10 +75,11 @@ class App extends Component {
     return (
       <div>
         <Navigation
-          user={this.state.user}
+          userName={this.state.displayName}
           logOutUser={this.logOutUser}
+
         />
-        {this.state.user && (
+        {this.state.displayName && (
           <Welcome
             userName={this.state.displayName}
             logOutUser={this.logOutUser}
@@ -78,7 +87,7 @@ class App extends Component {
         )}
 
         <Router>
-          <Home path="/" user={this.state.user} />
+          <Home path="/" userName={this.state.displayName} />
           <Login path="/login" />
           <Dashboard path="/dashboard" />
           <Register
