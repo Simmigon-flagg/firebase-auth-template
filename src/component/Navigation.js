@@ -4,7 +4,6 @@ import { Link } from "@reach/router";
 class Navigation extends Component {
   render() {
     const { userName , logOutUser} = this.props;
-
     return (
       <nav className="site-nav family-sans navbar navbar-expand bg-primary navbar-dark higher">
         <div className="container-fluid">
